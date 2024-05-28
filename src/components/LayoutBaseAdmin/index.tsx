@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import Sider from "antd/es/layout/Sider";
 import Logo from "../../../public/logo-Thrift-shop.png";
 import ImgComponent from "../Img";
+import ProfileImage from "../../../public/profile-image.png";
 
 const { Header, Content } = Layout;
 
@@ -107,7 +108,7 @@ const LayoutBaseAdmin = ({ children }: { children: React.ReactNode }) => {
         trigger={null}
         collapsible
         collapsed={collapsed}
-        style={{ background: "#fff" }}
+        style={{ background: "#F3F4F6" }}
       >
         <div>
           <ImgComponent
@@ -118,7 +119,7 @@ const LayoutBaseAdmin = ({ children }: { children: React.ReactNode }) => {
         </div>
 
         <Menu
-          theme="light"
+        style={{backgroundColor:'#F3F4F6'}}
           mode="inline"
           defaultSelectedKeys={["1"]}
           items={menuItems.map((item) => ({
@@ -143,13 +144,13 @@ const LayoutBaseAdmin = ({ children }: { children: React.ReactNode }) => {
           <div className="flex-grow"></div>
           <Dropdown menu={{ items: profileMenuItems }} placement="bottomRight">
             <div className="flex items-center justify-end space-x-4 mr-4 cursor-pointer">
-              <Avatar />
+              <Avatar src={ProfileImage} style={{border:'1px solid #B2F6E9'}}/>
               <p className="m-0">Admin</p>
             </div>
           </Dropdown>
         </Header>
 
-        <Content>{children}</Content>
+        <Content className='w-full p-8 bg-[#fff]'>{children}</Content>
       </Layout>
     </Layout>
   );

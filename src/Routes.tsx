@@ -6,6 +6,9 @@ import ClientsPage from './pages/Clients';
 import ChatPage from './pages/Chat';
 import SettingsPage from './pages/Settings';
 import LoginPage from './pages/Auth/Login';
+import RegisterPage from './pages/Auth/Register';
+import ForgotPasswordPage from './pages/Auth/ForgotPassword';
+
 
 const AppRoutes: React.FC = () => {
   return (
@@ -13,6 +16,10 @@ const AppRoutes: React.FC = () => {
       <Routes>
 
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+
+
 
         {/* Admin Routes */}
         <Route path="/admin/dashboard" element={<DashboardPage />} />
