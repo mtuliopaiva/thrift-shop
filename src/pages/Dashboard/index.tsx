@@ -1,18 +1,19 @@
 import { Card, Statistic } from "antd";
 import LayoutBaseAdmin from "../../components/LayoutBaseAdmin";
 import TextComponent from "../../components/TextComponent";
-import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
+import { ArrowUpOutlined } from "@ant-design/icons";
+import LineGraphComponent from "../../components/Charts/LineGraphComponent";
 
 const DashboardPage = () => {
   return (
     <>
       <LayoutBaseAdmin>
-        <div className="w-full">
+        <div className="w-full h-screen">
           <TextComponent
             size="2em"
             weight="700"
             color="#243D5C"
-            className="mb-6"
+            className="my-6"
           >
             Dashboard
           </TextComponent>
@@ -20,7 +21,19 @@ const DashboardPage = () => {
             <div className="w-1/3 m-2">
               <Card bordered={false}>
                 <Statistic
-                  title="Active"
+                  title="Vendas"
+                  value={1200}
+                  precision={2}
+                  valueStyle={{ color: "#3f8600" }}
+                  suffix={<ArrowUpOutlined />}
+                  prefix="R$"
+                />
+              </Card>
+            </div>
+            <div className="w-1/3 m-2">
+              <Card bordered={false}>
+                <Statistic
+                  title="Produtos Cadastrados"
                   value={11.28}
                   precision={2}
                   valueStyle={{ color: "#3f8600" }}
@@ -32,28 +45,16 @@ const DashboardPage = () => {
             <div className="w-1/3 m-2">
               <Card bordered={false}>
                 <Statistic
-                  title="Active"
-                  value={11.28}
-                  precision={2}
+                  title="Clientes Registrados"
+                  value={23}
+                  precision={0}
                   valueStyle={{ color: "#3f8600" }}
-                  prefix={<ArrowUpOutlined />}
-                  suffix="%"
-                />
-              </Card>
-            </div>
-            <div className="w-1/3 m-2">
-              <Card bordered={false}>
-                <Statistic
-                  title="Active"
-                  value={11.28}
-                  precision={2}
-                  valueStyle={{ color: "#3f8600" }}
-                  prefix={<ArrowUpOutlined />}
-                  suffix="%"
+                  prefix="+"
                 />
               </Card>
             </div>
           </div>
+            <LineGraphComponent />
         </div>
       </LayoutBaseAdmin>
     </>

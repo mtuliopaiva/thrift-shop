@@ -150,7 +150,7 @@ const LayoutBaseAdmin = ({ children }: { children: React.ReactNode }) => {
           </Dropdown>
         </Header>
 
-        <Content className='w-full p-8 bg-[#fff]'>{children}</Content>
+        <Content className='w-full h-full p-8 bg-[#fff]'>{children}</Content>
       </Layout>
     </Layout>
   );
