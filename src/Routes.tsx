@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import DashboardPage from './pages/Dashboard';
-import ProductsPage from './pages/Products';
 import ClientsPage from './pages/Clients';
 import ChatPage from './pages/Chat';
 import SettingsPage from './pages/Settings';
 import LoginPage from './pages/Auth/Login';
 import RegisterPage from './pages/Auth/Register';
 import ForgotPasswordPage from './pages/Auth/ForgotPassword';
+import ProductsList from './pages/Products/ProductsList';
+import ProductsCreate from './pages/Products/ProductsCreate';
 
 
 const AppRoutes: React.FC = () => {
@@ -23,7 +24,9 @@ const AppRoutes: React.FC = () => {
 
         {/* Admin Routes */}
         <Route path="/admin/dashboard" element={<DashboardPage />} />
-        <Route path="/admin/products" element={<ProductsPage />} />
+        <Route path="/admin/products" element={<ProductsList />} />
+        <Route path="/admin/products/create" element={<ProductsCreate />} />
+
         <Route path="/admin/clients" element={<ClientsPage />} />
         <Route path="/admin/chat" element={<ChatPage />} />
         <Route path="/admin/settings" element={<SettingsPage />} />
