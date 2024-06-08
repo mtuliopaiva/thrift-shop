@@ -1,7 +1,13 @@
 import { Button, Popconfirm, Table, TableProps, Tag, Input } from "antd";
 import LayoutBaseAdmin from "../../../components/LayoutBaseAdmin";
 import TextComponent from "../../../components/TextComponent";
-import { QuestionCircleOutlined, EditTwoTone, DeleteTwoTone, EyeTwoTone, PlusOutlined   } from "@ant-design/icons";
+import {
+  QuestionCircleOutlined,
+  EditTwoTone,
+  DeleteTwoTone,
+  EyeTwoTone,
+  PlusOutlined,
+} from "@ant-design/icons";
 import { SearchProps } from "antd/es/input";
 import { useNavigate } from "react-router-dom";
 
@@ -15,8 +21,8 @@ interface DataType {
 }
 
 const { Search } = Input;
-const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
-
+const onSearch: SearchProps["onSearch"] = (value, _e, info) =>
+  console.log(info?.source, value);
 
 const ProductsList = () => {
   const navigate = useNavigate();
@@ -53,19 +59,19 @@ const ProductsList = () => {
             let color;
             switch (size) {
               case "PP":
-                color = "#ffcccc"; // Vermelho claro
+                color = "#ffcccc";
                 break;
               case "P":
-                color = "#ff6666"; // Vermelho mais escuro
+                color = "#ff6666";
                 break;
               case "M":
-                color = "#ffff99"; // Amarelo
+                color = "#ffff99";
                 break;
               case "G":
-                color = "#cc99ff"; // Roxo claro
+                color = "#cc99ff";
                 break;
               case "GG":
-                color = "#9933ff"; // Roxo mais escuro
+                color = "#9933ff";
                 break;
               default:
                 color = "#add8e6";
@@ -86,16 +92,19 @@ const ProductsList = () => {
     },
     {
       title: "Ações",
-      render: () => (
+      render: (record) => (
         <div className="flex md:flex-1 flex-row gap-4 h-18 md:h-auto items-center justify-center md:w-full">
           <Button
             className="flex h-8 w-8 items-center justify-center rounded bg-[#B0F7E5]"
+            onClick={() => navigate(`/admin/products/view/${record.key}`)}
           >
-            <EyeTwoTone twoToneColor="#284361"/>
+            <EyeTwoTone twoToneColor="#284361" />
           </Button>
 
           <Button
             className="flex h-8 w-8 items-center justify-center rounded bg-[#B0F7E5]"
+            onClick={() => navigate(`/admin/products/edit/${record.key}`)}
+
           >
             <EditTwoTone twoToneColor="#284361" />
           </Button>
@@ -110,10 +119,8 @@ const ProductsList = () => {
             okText="Sim"
             cancelText="Não"
           >
-            <Button
-            className="flex h-8 w-8 items-center justify-center rounded bg-[#B0F7E5]"
-            >
-              <DeleteTwoTone twoToneColor="#284361"/>
+            <Button className="flex h-8 w-8 items-center justify-center rounded bg-[#B0F7E5]">
+              <DeleteTwoTone twoToneColor="#284361" />
             </Button>
           </Popconfirm>
         </div>
@@ -136,48 +143,48 @@ const ProductsList = () => {
       category: "Calça",
       brand: "Levi's",
       color: "Azul",
-      sizes: ["38", "40", "42", "44", "46"]
-  },
-  {
+      sizes: ["38", "40", "42", "44", "46"],
+    },
+    {
       key: "3",
       name: "Tênis esportivo - Adidas",
       category: "Tênis",
       brand: "Adidas",
       color: "Branco",
-      sizes: ["38", "39", "40", "41", "42"]
-  },
-  {
+      sizes: ["38", "39", "40", "41", "42"],
+    },
+    {
       key: "4",
       name: "Camiseta básica - Puma",
       category: "Camiseta",
       brand: "Puma",
       color: "Cinza",
-      sizes: ["P", "M", "G", "GG"]
-  },
-  {
+      sizes: ["P", "M", "G", "GG"],
+    },
+    {
       key: "5",
       name: "Calça moletom - Nike",
       category: "Calça",
       brand: "Nike",
       color: "Preto",
-      sizes: ["P", "M", "G", "GG"]
-  },
-  {
+      sizes: ["P", "M", "G", "GG"],
+    },
+    {
       key: "6",
       name: "Tênis casual - Converse",
       category: "Tênis",
       brand: "Converse",
       color: "Preto",
-      sizes: ["37", "38", "39", "40", "41"]
-  },
-  {
+      sizes: ["37", "38", "39", "40", "41"],
+    },
+    {
       key: "7",
       name: "Camiseta estampada - Vans",
       category: "Camiseta",
       brand: "Vans",
       color: "Preto/Vermelho",
-      sizes: ["P", "PP", "M", "G", "GG"]
-  }
+      sizes: ["P", "PP", "M", "G", "GG"],
+    },
   ];
 
   return (
@@ -193,12 +200,22 @@ const ProductsList = () => {
             Produtos
           </TextComponent>
           <div className="flex flex-row justify-between">
-          <Search placeholder="Buscar produto..." size="large" onSearch={onSearch} style={{ width: '50%' }} />
-          <Button className="bg-[#A9E8DD]" icon={<PlusOutlined />} size={"large"} onClick={() => navigate('/admin/products/create')}>
-            Produto
-          </Button>
+            <Search
+              placeholder="Buscar produto..."
+              size="large"
+              onSearch={onSearch}
+              style={{ width: "50%" }}
+            />
+            <Button
+              className="bg-[#A9E8DD]"
+              icon={<PlusOutlined />}
+              size={"large"}
+              onClick={() => navigate("/admin/products/create")}
+            >
+              Produto
+            </Button>
           </div>
-          <Table className='my-6' columns={columns} dataSource={data} />
+          <Table className="my-6" columns={columns} dataSource={data} />
         </div>
       </LayoutBaseAdmin>
     </>

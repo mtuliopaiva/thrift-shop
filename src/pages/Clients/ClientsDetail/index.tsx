@@ -3,7 +3,7 @@ import LayoutBaseAdmin from "../../../components/LayoutBaseAdmin";
 import TextComponent from "../../../components/TextComponent";
 import { useNavigate } from "react-router-dom";
 
-import { SkinOutlined } from "@ant-design/icons";
+import { InboxOutlined } from "@ant-design/icons";
 import { Button, Form, Select, Upload } from "antd";
 
 const { Option } = Select;
@@ -21,7 +21,7 @@ const onFinish = (values: any) => {
   console.log("Received values of form: ", values);
 };
 
-const ProductsCreate = () => {
+const ClientsDetail = () => {
   const navigate = useNavigate();
 
 
@@ -48,12 +48,14 @@ const ProductsCreate = () => {
                 >
                   <Upload.Dragger name="files" action="/upload.do">
                     <p className="ant-upload-drag-icon">
-                      <SkinOutlined style={{color: '#243D5C'}}/>
+                      <InboxOutlined />
                     </p>
                     <p className="ant-upload-text">
-                      Clique ou arraste o arquivo para a área de upload
+                      Click or drag file to this area to upload
                     </p>
-                   
+                    <p className="ant-upload-hint">
+                      Support for a single or bulk upload.
+                    </p>
                   </Upload.Dragger>
                 </Form.Item>
               </div>
@@ -187,4 +189,4 @@ const ProductsCreate = () => {
   );
 };
 
-export default ProductsCreate;
+export default ClientsDetail;

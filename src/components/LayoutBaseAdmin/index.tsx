@@ -20,7 +20,8 @@ const { Header, Content } = Layout;
 
 const LayoutBaseAdmin = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [current, setCurrent] = useState<string>("1");
 
   const handleLogout = () => {
     console.log("Logout confirmado");
@@ -29,6 +30,14 @@ const LayoutBaseAdmin = ({ children }: { children: React.ReactNode }) => {
 
   const handleToggleCollapse = () => {
     setCollapsed((prevCollapsed) => !prevCollapsed);
+  };
+
+  const handleSelectMenuItem = (e: any) => {
+    setCurrent(e.key);
+    const selectedItem = menuItems.find(item => item.key === e.key);
+    if (selectedItem && selectedItem.path) {
+      navigate(selectedItem.path);
+    }
   };
 
   const menuItems = [
@@ -119,16 +128,16 @@ const LayoutBaseAdmin = ({ children }: { children: React.ReactNode }) => {
         </div>
 
         <Menu
-        style={{backgroundColor:'#F3F4F6'}}
-          mode="inline"
-          defaultSelectedKeys={["1"]}
-          items={menuItems.map((item) => ({
-            key: item.key,
-            icon: item.icon,
-            label: item.label,
-            onClick: item.path ? () => navigate(item.path) : undefined,
-          }))}
-        />
+      style={{ backgroundColor: '#F3F4F6' }}
+      mode="inline"
+      selectedKeys={[current]}
+      onClick={handleSelectMenuItem}
+      items={menuItems.map((item) => ({
+        key: item.key,
+        icon: item.icon,
+        label: item.label,
+      }))}
+    />
       </Sider>
       <Layout className="w-full h-full">
         <Header className="flex items-center justify-between p-0 bg-gray-100 w-full">
@@ -144,13 +153,16 @@ const LayoutBaseAdmin = ({ children }: { children: React.ReactNode }) => {
           <div className="flex-grow"></div>
           <Dropdown menu={{ items: profileMenuItems }} placement="bottomRight">
             <div className="flex items-center justify-end space-x-4 mr-4 cursor-pointer">
-              <Avatar src={ProfileImage} style={{border:'1px solid #B2F6E9'}}/>
+              <Avatar
+                src={ProfileImage}
+                style={{ border: "1px solid #B2F6E9" }}
+              />
               <p className="m-0">Admin</p>
             </div>
           </Dropdown>
         </Header>
 
-        <Content className='w-full h-full p-8 bg-[#fff]'>{children}</Content>
+        <Content className="w-full h-full p-8 bg-[#fff]">{children}</Content>
       </Layout>
     </Layout>
   );

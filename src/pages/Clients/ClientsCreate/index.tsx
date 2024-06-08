@@ -3,7 +3,7 @@ import LayoutBaseAdmin from "../../../components/LayoutBaseAdmin";
 import TextComponent from "../../../components/TextComponent";
 import { useNavigate } from "react-router-dom";
 
-import { SkinOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import { Button, Form, Select, Upload } from "antd";
 
 const { Option } = Select;
@@ -21,7 +21,7 @@ const onFinish = (values: any) => {
   console.log("Received values of form: ", values);
 };
 
-const ProductsCreate = () => {
+const ClientsCreate = () => {
   const navigate = useNavigate();
 
 
@@ -29,13 +29,15 @@ const ProductsCreate = () => {
     <>
       <LayoutBaseAdmin>
         <div className="w-full flex flex-col w-full h-screen">
+        <UserOutlined style={{color: '#243D5C'}}/>
+
           <TextComponent
             size="2em"
             weight="700"
             color="#243D5C"
             className="my-6"
           >
-            Criar Produto
+            Criar Cliente
           </TextComponent>
           <Form name="validate_other" onFinish={onFinish} layout="vertical">
             <div className="w-full flex">
@@ -48,7 +50,7 @@ const ProductsCreate = () => {
                 >
                   <Upload.Dragger name="files" action="/upload.do">
                     <p className="ant-upload-drag-icon">
-                      <SkinOutlined style={{color: '#243D5C'}}/>
+                      <UserOutlined style={{color: '#243D5C'}}/>
                     </p>
                     <p className="ant-upload-text">
                       Clique ou arraste o arquivo para a área de upload
@@ -187,4 +189,4 @@ const ProductsCreate = () => {
   );
 };
 
-export default ProductsCreate;
+export default ClientsCreate;
