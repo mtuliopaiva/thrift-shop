@@ -15,28 +15,37 @@ import Logo from "../../../public/logo-Thrift-shop.png";
 import ImgComponent from "../Img";
 import ProfileImage from "../../../public/profile-image.png";
 
-const { Header, Content } = Layout;
+const { Header, Content, Footer } = Layout;
 
-const LayoutBaseAdmin = ({ children }: { children: React.ReactNode }) => {
+const items = [
+    {
+      key: 1,
+      label: 'Home',
+      path: '/home'
+    },
+    {
+      key: 2,
+      label: 'Quem somos',
+      path: '/quem-somos'
+    },
+    {
+        key: 3,
+        label: 'Quem somos',
+        path: '/quem-somos'
+      },
+      {
+        key: 4,
+        label: 'Quem somos',
+        path: '/quem-somos'
+      }
+  ];
+
+const LayoutBaseLandingPage = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
-  const [collapsed, setCollapsed] = useState<boolean>(false);
-  const [current, setCurrent] = useState<string>("1");
 
   const handleLogout = () => {
     console.log("Logout confirmado");
     navigate("/");
-  };
-
-  const handleToggleCollapse = () => {
-    setCollapsed((prevCollapsed) => !prevCollapsed);
-  };
-
-  const handleSelectMenuItem = (e: any) => {
-    setCurrent(e.key);
-    const selectedItem = menuItems.find(item => item.key === e.key);
-    if (selectedItem && selectedItem.path) {
-      navigate(selectedItem.path);
-    }
   };
 
   const menuItems = [
@@ -106,59 +115,49 @@ const LayoutBaseAdmin = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Layout className="h-screen w-full">
-      <Sider
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-        style={{ background: "#F3F4F6" }}
-      >
-        <div>
-          <ImgComponent
-            src={Logo}
-            alt="Logotipo da Thrift Shop"
-            className="custom-class p-8"
-          />
-        </div>
 
-        <Menu
-      style={{ backgroundColor: '#F3F4F6' }}
-      mode="inline"
-      selectedKeys={[current]}
-      onClick={handleSelectMenuItem}
-      items={menuItems.map((item) => ({
-        key: item.key,
-        icon: item.icon,
-        label: item.label,
-      }))}
-    />
-      </Sider>
       <Layout className="w-full h-full">
-        <Header className="flex items-center justify-between p-0 bg-gray-100 w-full">
-          <div className="flex items-center">
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={handleToggleCollapse}
-              style={{ fontSize: "16px", width: 64, height: 64 }}
-            />
-          </div>
+      <Header className="flex items-center h-[80px] bg-[#A8E7DD]">
+      {/* Div 1: Imagem de Teste */}
+      <div className="flex items-center justify-start w-1/3">
+        <img
+          src="../../../public/logo-store.png"
+          alt="Logo da Thrift shop"
+          className="w-[40%]"
+        />
+      </div>
 
-          <div className="flex-grow"></div>
-          <Dropdown menu={{ items: profileMenuItems }} placement="bottomRight">
-            <div className="flex items-center justify-end space-x-4 mr-4 cursor-pointer">
-              <Avatar
-                src={ProfileImage}
-                style={{ border: "1px solid #B2F6E9" }}
-              />
-              <p className="m-0">Admin</p>
-            </div>
-          </Dropdown>
-        </Header>
+      {/* Div 2: Menu Centralizado */}
+      <div className="flex justify-center w-1/3">
+        <Menu
+          mode="horizontal"
+          defaultSelectedKeys={["1"]}
+          items={items}
+          style={{ backgroundColor: "#A8E7DD", borderBottom: 'none' }}
+        />
+      </div>
+
+      {/* Div 3: Dropdown */}
+      <div className="flex items-center justify-end w-1/3 space-x-4 mr-4 cursor-pointer">
+        <Dropdown menu={{ items: profileMenuItems }} placement="bottomRight">
+          <div className="flex items-center">
+            <Avatar
+              src="https://via.placeholder.com/40"
+              style={{ border: "1px solid #B2F6E9" }}
+            />
+            <p className="m-0 ml-2">Admin</p>
+          </div>
+        </Dropdown>
+      </div>
+    </Header>
 
         <Content className="w-full h-full p-8 bg-[#fff]">{children}</Content>
+        <Footer className="flex items-center justify-between p-0 bg-[#A8E7DE] w-full">
+          Footer
+        </Footer>
       </Layout>
     </Layout>
   );
 };
 
-export default LayoutBaseAdmin;
+export default LayoutBaseLandingPage;

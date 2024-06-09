@@ -1,6 +1,4 @@
 import { Button, Popconfirm, Table, TableProps, Tag, Input } from "antd";
-import LayoutBaseAdmin from "../../../components/LayoutBaseAdmin";
-import TextComponent from "../../../components/TextComponent";
 import {
   QuestionCircleOutlined,
   EditTwoTone,
@@ -10,6 +8,8 @@ import {
 } from "@ant-design/icons";
 import { SearchProps } from "antd/es/input";
 import { useNavigate } from "react-router-dom";
+import LayoutBaseAdmin from "../../../../components/LayoutBaseAdmin";
+import TextComponent from "../../../../components/TextComponent";
 
 interface DataType {
   key: string;

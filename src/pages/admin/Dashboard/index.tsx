@@ -1,8 +1,8 @@
 import { Card, Statistic } from "antd";
-import LayoutBaseAdmin from "../../components/LayoutBaseAdmin";
-import TextComponent from "../../components/TextComponent";
 import { ArrowUpOutlined } from "@ant-design/icons";
-import LineGraphComponent from "../../components/Charts/LineGraphComponent";
+import TextComponent from "../../../components/TextComponent";
+import LayoutBaseAdmin from "../../../components/LayoutBaseAdmin";
+import LineGraphComponent from "../../../components/Charts/LineGraphComponent";
 
 const DashboardPage = () => {
   return (

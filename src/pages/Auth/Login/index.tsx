@@ -3,8 +3,11 @@ import ImageLogo from "../../../../public/login-image.png";
 import TextComponent from "../../../components/TextComponent";
 import TextInput from "../../../components/Inputs/TextInput";
 import ButtonComponent from "../../../components/Buttons/ButtonComponent";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+
+  const navigate = useNavigate();
 
   return (
     <div className="w-full h-screen flex">
@@ -23,7 +26,9 @@ const LoginPage = () => {
 
         <TextInput label={"E-mail"} name={"email"} type="email"/>
         <TextInput label={"Senha"} name={"password"} type="password"/>
-        <ButtonComponent label="Login" className="bg-teal-500 text-white rounded align-center"/>
+        <ButtonComponent label="Login" className="bg-teal-500 text-white rounded align-center"
+        onClick={() => navigate('/admin/dashboard')}
+        />
         <div className="flex flex-row mt-6">
         {/* <ButtonComponent type="link" label="Esqueceu sua senha?" className="border-none" onClick={() => navigate('/forgot-password')}/>
         <ButtonComponent type="link" label="Registrar" className="border-none" onClick={() => navigate('/register')}/> */}

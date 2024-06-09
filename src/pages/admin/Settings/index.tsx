@@ -1,4 +1,4 @@
-import LayoutBaseAdmin from "../../components/LayoutBaseAdmin";
+import LayoutBaseAdmin from "../../../components/LayoutBaseAdmin";
 
 const SettingsPage = () => {
     return (
